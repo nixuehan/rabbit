@@ -90,6 +90,8 @@ API 测试后台
 API文档
 --------
 
+##有了API，你就可以很方便的把服务接入你自己的项目了
+
 ###过滤API
 
 POST /filter
@@ -99,6 +101,7 @@ POST /filter
 返回格式:json
 
 具体返回值说明：
+{"category":"9","categoryName":"违法信息","hit":"1","id":"38509","rate":"2","word":"蒙汗药"}
 
 hit 是否命中, 0 否 1 是
 category 脏词的分类id
