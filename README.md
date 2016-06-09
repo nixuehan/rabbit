@@ -20,7 +20,6 @@ rabbit-兔兔不良 是一个不良信息过滤服务
 
 下载符合自己机器的版本，运行即可
 
-.. code-block:: bash
 
     $ ./rabbit
 
