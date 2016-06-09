@@ -26,19 +26,29 @@ rabbit-兔兔不良 是一个不良信息过滤服务
 
 支持的参数：
 
-.. code-block:: bash
 
 Usage of ./rabbit:
+
   -apikey string
+
         application apikey (default "sdeolkmddw")
+
   -host string
+
         bind address (default "127.0.0.1")
+
   -interval int
+
         auto reload time interval (default 12)
+
   -log string
+
         log file path (default "rabbit.log")
+
   -port int
+
         port the rabbit will listen on (default 9394)
+
 
 
 其他默认就好。主要讲下这参数
@@ -104,6 +114,7 @@ id 脏词ID,利用这个ID就可以编辑脏词
 rate黑名单或白名单，1 黑名单 2灰名单(自己review内容)
 word 脏词
 
+--------
 
 添加脏词
 
@@ -119,7 +130,7 @@ correct 是否支持畸形纠正. 1 是 2否
 
 具体返回值说明： { "success": 1 }
 
-
+--------
 
 删除脏词
 
@@ -131,6 +142,8 @@ DELETE /delete
 
 具体返回值说明： { "success": 1 }
 
+
+--------
 
 修改脏词
 
@@ -147,6 +160,7 @@ correct 是否支持畸形纠正. 1 是 2 否
 
 具体返回值说明： { "success": 1 }
 
+--------
 
 脏词查询
 
@@ -165,6 +179,7 @@ end 记录结束数(分页使用)
 
 具体返回值说明： [ { "Id": 9, "Category": 2, "CategoryName": "低俗信息", "Word": "我做你做不做", "Correct": 1, "Rate": 1 }, { "Id": 8, "Category": 2, "CategoryName": "低俗信息", "Word": "发问了你", "Correct": 1, "Rate": 1 } ]
 
+--------
 
 脏词分类
 
@@ -176,6 +191,8 @@ GET /category
 
 [{"Category_id":1,"Category_name":"个性化"},{"Category_id":2,"Category_name":"低俗信息"},{"Category_id":3,"Category_name":"灌水信息"},{"Category_id":5,"Category_name":"政治敏感"},{"Category_id":6,"Category_name":"违约广告"},{"Category_id":7,"Category_name":"跨站追杀"},{"Category_id":8,"Category_name":"色情信息"},{"Category_id":9,"Category_name":"违法信息"},{"Category_id":10,"Category_name":"垃圾广告"}]
 
+
+--------
 
 脏词重载
 
