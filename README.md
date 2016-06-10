@@ -203,6 +203,96 @@ GET /reload
 
 具体返回值说明： { "success": 1 }
 
+
+----------
+压测数据
+----------
+硬件配置： 阿里云主机  CPU： 1核    内存： 1024 MB
+
+压测的数据如下。内容共计：371个字数、817个字符：
+```javascript
+wrk.method = "POST"  
+wrk.body  = "contents=原来，7日中午，张某夫妇带着儿子张峰（化名，现年2岁半）和女儿张娟（化名，现年1岁），来到位于银海区银滩镇龙潭村委会的姐夫刘某家吃饭。吃饭过程中，张峰和张娟被放在刘某房间玩耍，调皮的张峰在床头的夹层里翻出一包东西，他以为是零食，顺手抓了几颗放进嘴里。一旁的张娟见哥哥吃东西，她也爬过来拿着往嘴里塞两人的举动引起张某夫妇的注意。等走近一看，发现孩子们吃的东西竟是老鼠药。吓坏了的张某赶紧抱起儿子张峰，并从其嘴里抠出两粒老鼠药。“快送医院！”目睹眼前这一幕后，刘某急忙大喊。回过神来的夫妇，立即抱起两个孩子冲出门外，并拨打了120急救电话其间，由于担心路上被堵，刘某的妻子建议先把孩子送到附近派出所，再通过民警送往医医。当天下午，经过约一小时的急救和洗胃，张峰和张娟脱离了生命危险。随后，两人被安排在儿科儿童病房进行观察。8日下午，两人的各项身体指标，都已恢复正常医生提醒家长，蒙汗药是一种烈性毒药，千万不要放在小孩够得到的地方"
+
+wrk.headers["Content-Type"] = "application/form-data"
+```
+
+跑下
+```javascript
+./wrk -t2 -c100 -d60s  --script=../post.lua http://10.161.171.74:9394/filter
+```
+
+两线程 100个连接  60秒 数据如下：
+```javascript
+Running 1m test @ http://10.16.17.74:9394/filter
+  2 threads and 100 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    12.82ms   10.94ms  90.37ms   88.89%
+    Req/Sec     4.63k     1.06k    6.85k    63.33%
+  552582 requests in 1.00m, 70.62MB read
+Requests/sec:   9207.21
+Transfer/sec:      1.18MB
+```
+
+两线程 3000个连接 60秒  数据如下：
+```javascript
+Running 30s test @ http://10.16.17.74:9394/filter
+  2 threads and 3000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   314.93ms   97.50ms   1.82s    84.51%
+    Req/Sec     4.48k     1.60k    7.33k    78.82%
+  266017 requests in 30.04s, 33.99MB read
+Requests/sec:   8854.35
+Transfer/sec:      1.13MB
+```
+
+两线程 4000个连接 60秒  开始出现 timeout了...阿里云服务器也就如此了。数据如下：
+```javascript
+Running 30s test @ http://10.161.171.74:9394/filter
+  2 threads and 4000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   375.02ms  133.17ms   1.95s    78.31%
+    Req/Sec     4.22k     1.68k    8.15k    69.59%
+  249464 requests in 30.10s, 31.88MB read
+  Socket errors: connect 0, read 871, write 0, timeout 136
+Requests/sec:   8288.02
+Transfer/sec:      1.06MB
+```
+
+
+
+换我的MAC 压测下。配置如下：Intel Core i5 1.6 GHz .内存 8 GB.  
+```javascript
+wrk -t8 -c100 -d60s  --script=./post.lua http://127.0.0.1:9394/filter
+```
+数据如下：
+```javascript
+Running 1m test @ http://127.0.0.1:9394/filter
+  8 threads and 100 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.76ms   12.46ms 245.15ms   90.71%
+    Req/Sec     2.62k   637.00    12.44k    79.64%
+  1253342 requests in 1.00m, 198.42MB read
+Requests/sec:  20853.38
+Transfer/sec:      3.30MB
+```
+
+依然是我的MAC 测试下，长内容性能。内容：4420个字数、9916个字符。脏词：网络+兼职+日入:qq 
+```javascript
+wrk -t8 -c100 -d60s  --script=./post.lua http://127.0.0.1:9394/filter
+```
+数据如下：
+```javascript
+Running 1m test @ http://127.0.0.1:9394/filter
+  8 threads and 100 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    13.27ms   16.38ms 219.79ms   87.87%
+    Req/Sec     1.33k   235.26     4.59k    73.11%
+  636879 requests in 1.00m, 100.82MB read
+Requests/sec:  10596.88
+Transfer/sec:      1.68MB
+```
+
 ----------
 遇到问题了？
 ----------
