@@ -106,6 +106,7 @@ POST /filter
 具体返回值说明：
 {"category":"9","categoryName":"违法信息","hit":"1","id":"38509","rate":"2","word":"蒙汗药"}
 
+```javascript
 hit: 是否命中, 0 否 1 是
 
 category: 脏词的分类id
@@ -117,6 +118,7 @@ id: 脏词ID,利用这个ID就可以编辑脏词
 rate: 黑名单或白名单，1 黑名单 2灰名单(自己review内容)
 
 word: 脏词
+```
 
 --------
 
