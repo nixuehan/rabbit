@@ -104,20 +104,20 @@ POST /filter
 返回格式:json
 
 具体返回值说明：
-{"category":"9","categoryName":"违法信息","hit":"1","id":"38509","rate":"2","word":"蒙汗药"}
+{"Category":"9","CategoryName":"违法信息","Hit":"1","Id":"38509","Rate":"2","Word":"蒙汗药"}
 
 ```javascript
-hit: 是否命中, 0 否 1 是
+Hit: 是否命中, 0 否 1 是
 
-category: 脏词的分类id
+Category: 脏词的分类id
 
-categoryName: 脏词所属分类名
+CategoryName: 脏词所属分类名
 
-id: 脏词ID,利用这个ID就可以编辑脏词
+Id: 脏词ID,利用这个ID就可以编辑脏词
 
-rate: 黑名单或白名单，1 黑名单 2灰名单(自己review内容)
+Rate: 黑名单或白名单，1 黑名单 2灰名单(自己review内容)
 
-word: 脏词
+Word: 脏词
 ```
 
 --------
@@ -128,10 +128,14 @@ POST /create
 
 参数:
 
-category 分类id.请通过分类查询接口了解
-word 脏词
-rate 黑名单或灰名单. 1黑名单 2灰名单
-correct 是否支持畸形纠正. 1 是 2否
+category: 分类id. 可通过分类查询接口了解
+
+word: 脏词
+
+rate: 黑名单或灰名单. 1黑名单 2灰名单
+
+correct: 是否支持畸形纠正. 1 是 2否
+
 返回格式:json
 
 具体返回值说明： { "success": 1 }
@@ -157,11 +161,16 @@ PUT /revise
 
 参数:
 
-id脏词id.主键
-category 分类id.请通过分类查询接口了解
-word 脏词
-rate 黑名单或灰名单. 1黑名单 2灰名单
-correct 是否支持畸形纠正. 1 是 2 否
+id: 脏词id.主键
+
+category: 分类id.请通过分类查询接口了解
+
+word: 脏词
+
+rate: 黑名单或灰名单. 1黑名单 2灰名单
+
+correct: 是否支持畸形纠正. 1 是 2 否
+
 返回格式:json
 
 具体返回值说明： { "success": 1 }
@@ -174,16 +183,37 @@ GET /query
 
 参数:
 
-id脏词id.主键
-category 分类id.请通过分类查询接口了解
-word 脏词
-rate 黑名单或灰名单. 1黑名单 2灰名单
-correct 是否支持畸形纠正. 1 是 2否
-start 记录开始数(分页使用)
-end 记录结束数(分页使用)
+id: 脏词id.主键
+
+category: 分类id.请通过分类查询接口了解
+
+word: 脏词
+
+rate: 黑名单或灰名单. 1黑名单 2灰名单
+
+correct: 是否支持畸形纠正. 1 是 2否
+
+start: 记录开始数(分页使用)
+
+end: 记录结束数(分页使用)
+
 返回格式:json
 
 具体返回值说明： [ { "Id": 9, "Category": 2, "CategoryName": "低俗信息", "Word": "我做你做不做", "Correct": 1, "Rate": 1 }, { "Id": 8, "Category": 2, "CategoryName": "低俗信息", "Word": "发问了你", "Correct": 1, "Rate": 1 } ]
+
+```javascript
+Category: 脏词的分类id
+
+CategoryName: 脏词所属分类名
+
+Id: 脏词ID,利用这个ID就可以编辑脏词
+
+Rate: 黑名单或白名单，1 黑名单 2灰名单(自己review内容)
+
+Word: 脏词
+
+Correct: 是否畸形纠正
+```
 
 --------
 
