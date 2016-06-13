@@ -2,7 +2,7 @@
 namespace Bad;
 /**
  * author 逆雪寒
- * version 0.8.2
+ * version 0.8.3
  */
 class Rabbit {
 
