@@ -2,6 +2,7 @@
 namespace Bad;
 /**
  * author 逆雪寒
+ * version 0.8.2
  */
 class Rabbit {
 
@@ -52,21 +53,21 @@ class Rabbit {
 	private function request($do,Array $parameter = [],$method = 'GET') {
 		$query = '';
 
-		$ch = curl_init(); //初始化CURL句柄 
+		$ch = curl_init(); 
 
 		if($method != 'GET') {
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $parameter);//设置提交的字符串
-			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method); //设置请求方式
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $parameter);
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
 
 		}else{
 			$query = "?" . http_build_query($parameter);
 		}
 
-		curl_setopt($ch, CURLOPT_URL, $this->host.$do.$query); //设置请求的URL
-		curl_setopt($ch, CURLOPT_TIMEOUT,600);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER,true); //设为TRUE把curl_exec()结果转化为字串，而不是直接输出 
+		curl_setopt($ch, CURLOPT_URL, $this->host.$do.$query);
+		curl_setopt($ch, CURLOPT_TIMEOUT,60);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
 
-		$data = curl_exec($ch);//执行预定义的CURL 
+		$data = curl_exec($ch);
 		if(curl_errno($ch)){ 
 		  return false;
 		}
