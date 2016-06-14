@@ -116,7 +116,6 @@ class Rabbit {
 	 * 添加脏词.
 	 *
 	 * @param array 
-	 *			int 	$id 脏词id
 	 * 			string  $word 脏词 
 	 * 			int 	$category 脏词分类
 	 * 			int 	$rate 黑名单OR灰名单 1 or 2
