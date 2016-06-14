@@ -71,7 +71,7 @@ sdk
 -------------------
 php:  https://github.com/nixuehan/rabbit/tree/master/php-sdk
 
-python:  待续
+python:  https://github.com/nixuehan/rabbit/tree/master/python-sdk
 
 nodejs:  待续
 
