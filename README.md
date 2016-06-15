@@ -134,6 +134,23 @@ Word: 脏词
 
 --------
 
+###过滤色情图片
+#目前是根据图片的 人类肤色 比例来进行打分,聊胜于无吧。-_-!别跟我说黑人XXOO无法识别。建议配合人工审核后台使用
+
+POST /porn
+
+参数: file=/data/thumb/xxoo.jpg  or   file = http://sd.com/xxoo.jpg
+
+返回格式:json
+
+具体返回值说明：
+{"score":86}
+
+```javascript
+score: 建议：65 - 85判断为性感 85以上为色情
+```
+
+
 ###添加脏词
 
 POST /create
