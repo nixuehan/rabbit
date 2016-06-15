@@ -135,11 +135,11 @@ Word: 脏词
 --------
 
 ###过滤色情图片
-#目前是根据图片的 人类肤色 比例来进行打分,聊胜于无吧。-_-!别跟我说黑人XXOO无法识别。建议配合人工审核后台使用
+####目前是根据图片的 人类肤色 比例来进行打分,聊胜于无吧。-_-!别跟我说黑人XXOO无法识别。建议配合人工审核后台使用
 
 POST /porn
 
-参数: file=/data/thumb/xxoo.jpg  or   file = http://sd.com/xxoo.jpg
+参数: file=/data/thumb/xxoo.jpg  或   file = http://sd.com/xxoo.jpg
 
 返回格式:json
 
